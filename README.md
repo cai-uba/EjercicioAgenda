@@ -1,6 +1,6 @@
 # EjercicioAgenda
 
-(ver UML adjunto)
+(ver UML adjunto V2)
 
 Se desea realizar un sistema de agenda de contactos.
 .Debe poder agregar o eliminar contactos.

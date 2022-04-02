@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Agenda.Entidades.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,13 @@ namespace Agenda.Entidades.Entidades
             _nombre = nombre;
             _tipo = tipo;
             _cantidadMaximaContactos = maximo;
-            _contactos = new List<Contacto>();
+            _contactos = new List<ContactoBase>();
         }
 
         private string _nombre;
         private string _tipo;
         private int _cantidadMaximaContactos;
-        private List<Contacto> _contactos;
+        private List<ContactoBase> _contactos;
 
         public string Nombre
         {
@@ -41,11 +42,12 @@ namespace Agenda.Entidades.Entidades
             return _contactos.Count;
         }
 
-        public void AgregarContacto(Contacto c) {
+        public void AgregarContacto(ContactoBase c) {
+
             if (CantidadRegistros() < _cantidadMaximaContactos)
                 _contactos.Add(c);
-            //else
-              // avisamos que esto no funcionó
+            else
+                throw new AgendaCompletaException();
         }
         public void EliminarContacto(int codigo) { }
         public Contacto TraerContactoFrecuente() { return null; }

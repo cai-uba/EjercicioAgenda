@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Agenda.Entidades.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,36 +7,24 @@ using System.Threading.Tasks;
 
 namespace Agenda.Entidades.Entidades
 {
-    public class Contacto
+    public abstract class Contacto : ContactoBase
     {
-        public Contacto(string nombre, string apellido, string telefono, string direccion, DateTime fechaNaciemento) {
-            _nombre = nombre;
-            _apellido = apellido;
+
+        public Contacto(int codigo, string nombre, string apellido,string telefono, string direccion) 
+            : base(codigo,nombre,apellido)
+        {
             _telefono = telefono;
             _direccion = direccion;
-            _fechaNacimiento = fechaNaciemento;
+            
         }
+        
+        protected string _telefono;
+        protected string _direccion;
+        protected string _log;
+        protected DateTime _fechaNacimiento;
+        protected int _llamadas;
 
-        private string _nombre;
-        private string _apellido;
-        private string _telefono;
-        private string _direccion;
-        private string _log;
-        private DateTime _fechaNacimiento;
-        private int _llamadas;
-
-        public string Nombre {
-            get {
-                return _nombre;
-            }
-        }
-        public string Apellido
-        {
-            get
-            {
-                return _apellido;
-            }
-        }
+        
         public string Telefono
         {
             get
@@ -69,7 +58,10 @@ namespace Agenda.Entidades.Entidades
         }
 
         public void LLamar() {
+
+
             _llamadas++;
+
         }
 
     }
